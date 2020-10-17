@@ -122,3 +122,7 @@ class ValueBet:
         all_games += [list(game) for game in matches_one]
         all_games += [list(game) for game in matches_two]
         return all_games
+
+if __name__ == '__main__':
+    vb = ValueBet()
+    vb.scrape()
