@@ -70,7 +70,7 @@ def scrape():
         odds_token = str(elements[4])
         odds_pattern = r'[a][n]\>(\d+\.\d+)\<\/'
         odds_raw = re.search(odds_pattern, odds_token)
-        odds = float(odds_raw.group(1))
+        odds = round(float(odds_raw.group(1)), 2)
 
         # GET THE AMOUNT
         amount_token = str(elements[5])
