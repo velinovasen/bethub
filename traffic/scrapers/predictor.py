@@ -119,7 +119,7 @@ class Predictions:
                                        home_odd=home_odd, draw_odd=draw_odd,
                                        away_odd=away_odd, temp=temp))
 
-        Prediction.objects.all()
+        Prediction.objects.all().delete()
         Prediction.objects.bulk_create(the_bulk)
 
     @staticmethod
