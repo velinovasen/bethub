@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Value Bets</title>
+    <title>All Games</title>
     <link rel="stylesheet" href="{% static 'volume_styles.css' %}">
 </head>
 <body>
@@ -15,24 +15,17 @@
             <li><a href="{% url 'predictions' %}">Predictions</a></li>
             <li><a href="{% url 'valuebets' %}">Value bets</a></li>
         </ul>
-  <h1>CURRENT VALUE BETS</h1>
+  <h1>ALL GAMES FOR TODAY</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th class="teams_blocks_header">Home Team</th>
-          <th class="teams_blocks_header">Away Team</th>
-            <th>Home %</th>
-            <th>Draw %</th>
-            <th>Away %</th>
-            <th>Bet</th>
-            <th>Prediction Odds</th>
+          <th class="time_regular">Time</th>
+          <th class="teams_regular">Home Team</th>
+          <th class="teams_regular">Away Team</th>
             <th>Home Odds</th>
             <th>Draw Odds</th>
             <th>Away Odds</th>
-            <th>Value %</th>
         </tr>
       </thead>
     </table>
@@ -40,21 +33,14 @@
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="1">
       <tbody>
-      {% for vb in all_valuebets %}
+      {% for game in all_regular_games %}
       <tr>
-          <td>{{ vb.date }}</td>
-          <td>{{ vb.time }}</td>
-          <td class="teams_blocks">{{ vb.home_team }}</td>
-          <td class="teams_blocks">{{ vb.away_team }}</td>
-          <td>{{ vb.home_prob }}</td>
-          <td>{{ vb.draw_prob }}</td>
-          <td>{{ vb.away_prob }}</td>
-          <td>{{ vb.bet_sign }}</td>
-          <td>{{ vb.odds_for_pred }}</td>
-          <td>{{ vb.home_odd }}</td>
-          <td>{{ vb.draw_odd }}</td>
-          <td>{{ vb.away_odd }}</td>
-          <td>{{ vb.value_percent }}</td>
+          <td class="time_regular">{{ game.time }}</td>
+          <td class="teams_regular">{{ game.home_team }}</td>
+          <td class="teams_tegular">{{ game.away_team }}</td>
+          <td>{{ game.home_odd }}</td>
+          <td>{{ game.draw_odd }}</td>
+          <td>{{ game.away_odd }}</td>
       </tr>
       {% endfor %}
       </tbody>

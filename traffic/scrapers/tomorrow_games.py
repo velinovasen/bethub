@@ -24,6 +24,16 @@ class TomorrowGames:
         "result": r'([c][o][r][e]\"\>(\d{1,2}[:]\d{1,2})([ ][p][e][n]|\<\/[t][d])|[p][o][s][t][p])'
     }
 
+    def scrape(self):
+        # OPEN THE BROWSER
+        driver = self.open_the_browser()
+
+        # GET THE DATA
+        all_games = self.get_the_data(driver)
+
+        # CLEAN DATA
+        self.clean_data(all_games)
+
     def open_the_browser(self):
         # OPEN THE BROWSER
         options = ChromeOptions()
@@ -37,8 +47,8 @@ class TomorrowGames:
     def get_the_data(self, driver):
         # GET THE DATA
         html = driver.execute_script('return document.documentElement.outerHTML;')
-        driver.close()
         soup = BeautifulSoup(html, 'html.parser')
+        driver.close()
         games = soup.find_all('tr')
         return games
 
@@ -69,3 +79,8 @@ class TomorrowGames:
 
         RegularGame.objects.all().delete()
         RegularGame.objects.bulk_create(the_bulk)
+
+
+if __name__ == '__main__':
+    tmr = TomorrowGames()
+    tmr.scrape()

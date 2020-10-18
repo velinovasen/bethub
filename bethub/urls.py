@@ -22,4 +22,5 @@ urlpatterns = [
     path('traffic/', include('traffic.urls')),
     path('predictions/', views.predictions, name='predictions'),
     path('valuebets/', views.valuebets, name='valuebets'),
+    path('games/', views.regular_games, name='all_games'),
 ]

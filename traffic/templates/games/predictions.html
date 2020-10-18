@@ -3,13 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bets Volume</title>
+    <title>Predictions</title>
     <link rel="stylesheet" href="{% static 'volume_styles.css' %}">
 </head>
 <body>
     <section>
   <!--for demo wrap-->
         <ul id="navbar">
+            <li><a href="{% url 'all_games' %}">Games</a></li>
             <li><a href="{% url 'traffic' %}">Traffic</a></li>
             <li><a href="{% url 'predictions' %}">Predictions</a></li>
             <li><a href="{% url 'valuebets' %}">Value bets</a></li>
