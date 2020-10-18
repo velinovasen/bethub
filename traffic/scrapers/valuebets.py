@@ -21,7 +21,7 @@ class ValueBet:
 
     REGEX = {
         "home": r'[e][T][e][a][m]\"\>\<[s][p][a][n]\>(.{1,60})\<\/[s][p][a][n]\>\<\/[s][p][a][n]\>\<[s]',
-        "away": r'[y][T][e][a][m]\"\>\<[s][p][a][n]\>(.{1,60})\<\/[s][p][a][n]\>\<\/[s][p][a][n]\>\<[s]',
+        "away": r'[y][T][e][a][m]\"\>\<[s][p][a][n]\>(.{1,60})\<\/[s][p][a][n]\>\<\/[s][p][a][n]\>\<\/[a]',
         "date_and_time": r'\"\>(\d{1,2}\/\d{1,2}\/\d{4})[ ](\d{1,2}\:\d{1,2})\<\/',
         "probabilities": r'\>(\d{1,2})\<\/([t]|[b])',
         "prediction": r'[t]\"\>([A-z0-9])\<\/',
@@ -43,16 +43,19 @@ class ValueBet:
 
     def open_the_browser(self):
         options = ChromeOptions()
-        options.headless = True  # -> FALSE IF YOU WANT TO SEE THE BROWSER BROWSING
+        options.headless = False  # -> FALSE IF YOU WANT TO SEE THE BROWSER BROWSING
         driver = Chrome(options=options, executable_path=ChromeDriverManager().install())
         driver.get(self.WEB_LINKS["football"])
+        print('before wait')
         sleep(3)
+        print('after 3 sec')
         driver.find_element_by_css_selector('#close-cc-bar').click()
         return driver
 
     def clean_data(self, all_games):
         the_bulk = []
         for game in all_games:
+            #print(game)
             # STORE ALL THE ITEMS
             [date, time, home, away, home_prob, draw_prob, away_prob, prediction,
              odds_for_pred, value_percent, home_odd, draw_odd, away_odd] = ['', '', '', '', '', '',
@@ -123,6 +126,6 @@ class ValueBet:
         all_games += [list(game) for game in matches_two]
         return all_games
 
-if __name__ == '__main__':
-    vb = ValueBet()
-    vb.scrape()
+
+vb = ValueBet()
+vb.scrape()
