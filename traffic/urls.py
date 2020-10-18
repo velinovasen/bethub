@@ -17,5 +17,5 @@ from traffic import views
 from django.urls import path
 
 urlpatterns = [
-    path('', views.traffic_volume, name='traffic_volume'),
+    path('', views.traffic_volume, name='traffic'),
 ]

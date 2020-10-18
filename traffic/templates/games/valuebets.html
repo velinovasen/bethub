@@ -9,6 +9,11 @@
 <body>
     <section>
   <!--for demo wrap-->
+        <ul id="navbar">
+            <li><a href="{% url 'traffic' %}">Traffic</a></li>
+            <li><a href="{% url 'predictions' %}">Predictions</a></li>
+            <li><a href="{% url 'valuebets' %}">Value bets</a></li>
+        </ul>
   <h1>CURRENT VALUE BETS</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
@@ -16,8 +21,8 @@
         <tr>
           <th>Date</th>
           <th>Time</th>
-          <th>Home Team</th>
-          <th>Away Team</th>
+          <th class="teams_blocks_header">Home Team</th>
+          <th class="teams_blocks_header">Away Team</th>
             <th>Home %</th>
             <th>Draw %</th>
             <th>Away %</th>
@@ -38,8 +43,8 @@
       <tr>
           <td>{{ vb.date }}</td>
           <td>{{ vb.time }}</td>
-          <td>{{ vb.home_team }}</td>
-          <td>{{ vb.away_team }}</td>
+          <td class="teams_blocks">{{ vb.home_team }}</td>
+          <td class="teams_blocks">{{ vb.away_team }}</td>
           <td>{{ vb.home_prob }}</td>
           <td>{{ vb.draw_prob }}</td>
           <td>{{ vb.away_prob }}</td>

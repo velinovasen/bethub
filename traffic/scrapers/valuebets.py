@@ -43,7 +43,7 @@ class ValueBets:
 
     def open_the_browser(self):
         options = ChromeOptions()
-        options.headless = False  # -> FALSE IF YOU WANT TO SEE THE BROWSER BROWSING
+        options.headless = True  # -> FALSE IF YOU WANT TO SEE THE BROWSER BROWSING
         driver = Chrome(options=options, executable_path=ChromeDriverManager().install())
         driver.get(self.WEB_LINKS["football"])
         sleep(3)
