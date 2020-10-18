@@ -86,4 +86,5 @@ def scrape():
     BetsVolume.objects.bulk_create(the_bulk)
 
 
-scrape()
+# if __name__ == '__main__':
+#     scrape()

@@ -46,16 +46,13 @@ class ValueBets:
         options.headless = False  # -> FALSE IF YOU WANT TO SEE THE BROWSER BROWSING
         driver = Chrome(options=options, executable_path=ChromeDriverManager().install())
         driver.get(self.WEB_LINKS["football"])
-        print('before wait')
         sleep(3)
-        print('after 3 sec')
         driver.find_element_by_css_selector('#close-cc-bar').click()
         return driver
 
     def clean_data(self, all_games):
         the_bulk = []
         for game in all_games:
-            #print(game)
             # STORE ALL THE ITEMS
             [date, time, home, away, home_prob, draw_prob, away_prob, prediction,
              odds_for_pred, value_percent, home_odd, draw_odd, away_odd] = ['', '', '', '', '', '',
@@ -101,10 +98,10 @@ class ValueBets:
             except AttributeError:
                 home_odd, draw_odd, away_odd = ['1.00', '1.00', '1.00']
 
-            the_bulk.append(ValueBets(date=date, time=time, home_team=home, away_team=away, home_prob=home_prob,
-                                      draw_prob=draw_prob, away_prob=away_prob, bet_sign=prediction,
-                                      odds_for_pred=odds_for_pred, home_odd=home_odd, draw_odd=draw_odd,
-                                      away_odd=away_odd, value_percent=value_percent))
+            the_bulk.append(ValueBet(date=date, time=time, home_team=home, away_team=away, home_prob=home_prob,
+                                     draw_prob=draw_prob, away_prob=away_prob, bet_sign=prediction,
+                                     odds_for_pred=odds_for_pred, home_odd=home_odd, draw_odd=draw_odd,
+                                     away_odd=away_odd, value_percent=value_percent))
 
         ValueBet.objects.all().delete()
         ValueBet.objects.bulk_create(the_bulk)
@@ -127,5 +124,6 @@ class ValueBets:
         return all_games
 
 
-vb = ValueBets()
-vb.scrape()
+# if __name__ == '__main__':
+#     vb = ValueBets()
+#     vb.scrape()
