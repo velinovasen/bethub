@@ -11,10 +11,10 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bethub.settings')
 django.setup()
 application = get_wsgi_application()
 
-from traffic.models import ValueBets
+from traffic.models import ValueBet
 
 
-class ValueBet:
+class ValueBets:
     WEB_LINKS = {
         "football": "https://m.forebet.com/en/value-bets"
     }
@@ -106,8 +106,8 @@ class ValueBet:
                                       odds_for_pred=odds_for_pred, home_odd=home_odd, draw_odd=draw_odd,
                                       away_odd=away_odd, value_percent=value_percent))
 
-        ValueBets.objects.all().delete()
-        ValueBets.objects.bulk_create(the_bulk)
+        ValueBet.objects.all().delete()
+        ValueBet.objects.bulk_create(the_bulk)
 
     @staticmethod
     def get_the_data(driver):
@@ -127,5 +127,5 @@ class ValueBet:
         return all_games
 
 
-vb = ValueBet()
+vb = ValueBets()
 vb.scrape()

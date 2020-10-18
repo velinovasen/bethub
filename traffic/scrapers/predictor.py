@@ -13,6 +13,7 @@ application = get_wsgi_application()
 
 from traffic.models import Prediction
 
+
 class Predictions:
     WEB_LINKS = {
         'football_today': 'https://m.forebet.com/en/football-tips-and-predictions-for-today',
@@ -161,6 +162,7 @@ class Predictions:
         return all_games
 
 
-scraper = Predictions()
-scraper.scrape()
+if __name__ == '__main:':
+    scraper = Predictions()
+    scraper.scrape()
 

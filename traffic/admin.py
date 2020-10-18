@@ -1,3 +1,9 @@
 from django.contrib import admin
 
+from traffic.models import Prediction, ValueBet, BetsVolume
+
 # Register your models here.
+
+admin.site.register(Prediction)
+admin.site.register(ValueBet)
+admin.site.register(BetsVolume)

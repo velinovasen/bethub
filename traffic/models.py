@@ -40,7 +40,7 @@ class Prediction(models.Model):
                f'{self.bet_sign}'
 
 
-class ValueBets(models.Model):
+class ValueBet(models.Model):
     date = models.DateField()
     time = models.TimeField()
     home_team = models.CharField(max_length=40)

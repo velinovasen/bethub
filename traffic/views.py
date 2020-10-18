@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import BetsVolume, Prediction, ValueBets
+from .models import BetsVolume, Prediction, ValueBet
 
 # Create your views here.
 
@@ -18,6 +18,6 @@ def predictions(request):
 
 
 def valuebets(request):
-    all_valuebets = ValueBets.objects.all()
+    all_valuebets = ValueBet.objects.all()
     context = {"all_valuebets": all_valuebets}
     return render(request, 'games/valuebets.html', context)
