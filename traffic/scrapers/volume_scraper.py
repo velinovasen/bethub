@@ -26,7 +26,7 @@ def scrape():
 
     # OPEN THE WEBSITE AND GET THE DATA
     options = ChromeOptions()
-    options.headless = False  # -> FALSE IF YOU WANT TO SEE THE BROWSER BROWSING
+    options.headless = True  # -> FALSE IF YOU WANT TO SEE THE BROWSER BROWSING
     options.add_argument("--lang=en")
     driver = Chrome(options=options, executable_path=ChromeDriverManager().install())
     driver.get(WEB_LINKS["football"])
@@ -86,5 +86,5 @@ def scrape():
     BetsVolume.objects.bulk_create(the_bulk)
 
 
-if __name__ == '__main__':
-    scrape()
+# if __name__ == '__main__':
+#     scrape()

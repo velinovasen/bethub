@@ -59,3 +59,17 @@ class ValueBet(models.Model):
         return f'{self.home_team} {self.away_team} ' \
                f'{self.bet_sign} {self.odds_for_pred} ' \
                f'{self.value_percent}'
+
+
+class RegularGame(models.Model):
+    time = models.TimeField()
+    home_team = models.CharField(max_length=40)
+    away_team = models.CharField(max_length=40)
+    home_odd = models.FloatField()
+    draw_odd = models.FloatField()
+    away_odd = models.FloatField()
+
+    def __str__(self):
+        return f'{self.home_team} - {self.away_team} ' \
+               f'{self.home_odd} {self.draw_odd} {self.away_odd}'
+
