@@ -70,7 +70,11 @@ class Predictions:
             both_teams = re.search(self.REGEX["both_teams"], str(game))
             try:
                 home_team = both_teams.group(1)
+                if '&amp;' in home_team or '&' in home_team:
+                    home_team = home_team.replace('&amp;', 'and')
                 away_team = both_teams.group(2)
+                if '&amp;' in away_team or '&' in away_team:
+                    away_team = away_team.replace('&amp;', '&')
                 # print(f"{items['home_team']} - {items['away_team']}")
             except AttributeError:
                 continue

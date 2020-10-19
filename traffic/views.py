@@ -5,6 +5,10 @@ from .models import BetsVolume, Prediction, ValueBet, RegularGame
 # Create your views here.
 
 
+def landing_view(request):
+    return render(request, 'games/landing_page.html')
+
+
 def traffic_volume(request):
     all_bets = BetsVolume.objects.all()
     context = {"all_bets": all_bets}

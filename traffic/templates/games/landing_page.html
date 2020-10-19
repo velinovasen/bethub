@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'landing_page.css' %}">
+    <title>Home Page</title>
+</head>
+<body>
+    <section id="landing-main">
+    <ul id="navbar">
+            <li><a href="{% url 'all_games' %}">Games</a></li>
+            <li><a href="{% url 'traffic' %}">Traffic</a></li>
+            <li><a href="{% url 'predictions' %}">Predictions</a></li>
+            <li><a href="{% url 'valuebets' %}">Value bets</a></li>
+        </ul>
+    </section>
+</body>
+</html>
