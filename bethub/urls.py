@@ -18,7 +18,7 @@ from django.urls import path, include
 from traffic import views
 
 urlpatterns = [
-    path('', views.landing_view),
+    path('', views.landing_view, name='landing_page'),
     path('admin/', admin.site.urls),
     path('traffic/', include('traffic.urls')),
     path('predictions/', views.predictions, name='predictions'),
