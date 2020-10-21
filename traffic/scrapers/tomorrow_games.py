@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 from time import sleep
 import re
+from datetime import datetime, timedelta
 from django.core.wsgi import get_wsgi_application
 
 sys.path.append('C:\\Users\\Asen\\Desktop\\bethub\\bethub')
@@ -13,9 +14,15 @@ application = get_wsgi_application()
 
 from traffic.models import RegularGame
 
+def get_tomorrow_date():
+    datetime.today().strftime('%Y-%m-%d')
+    tomorrow_date = (datetime.today() + timedelta(hours=24)).strftime('%Y-%m-%d')
+    return "".join(tomorrow_date.split('-'))
+
 
 class TomorrowGames:
-    WEB_LINKS = {"oddsportal": 'https://www.oddsportal.com/matches/soccer/20201019/'}
+
+    WEB_LINKS = {"oddsportal": 'https://www.oddsportal.com/matches/soccer/' + get_tomorrow_date()}
 
     REGEX = {
         "home_away_scheduled": r'(\/\"\>([A-z0-9].+)[ ]\-|[d]\"\>([A-z0-9].+)\<\/[s][p][a])[ ]([A-z0-9].{1,40})\<\/[a]',
@@ -67,6 +74,7 @@ class TomorrowGames:
                     time = re.search(self.REGEX["time"], str(game)).group(1)
                     try:
                         odds = re.findall(self.REGEX["odds"], str(game))
+                        print(odds)
                         [home_odd, draw_odd, away_odd] = [odds[0][1], odds[2][1], odds[4][1]]
                         the_bulk.append(RegularGame(time=time, home_team=home_team, away_team=away_team,
                                                     home_odd=home_odd, draw_odd=draw_odd, away_odd=away_odd))
@@ -80,7 +88,6 @@ class TomorrowGames:
         RegularGame.objects.all().delete()
         RegularGame.objects.bulk_create(the_bulk)
 
-
-if __name__ == '__main__':
-    tmr = TomorrowGames()
-    tmr.scrape()
+# if __name__ == '__main__':
+#     tmr = TomorrowGames()
+#     tmr.scrape()

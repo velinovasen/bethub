@@ -115,6 +115,8 @@ class Predictions:
             except AttributeError:
                 odds_for_pred = '1.00'
                 home_odd, draw_odd, away_odd = ['1.00', '1.00', '1.00']
+            except ValueError:
+                continue
 
             the_bulk.append(Prediction(date=date, time=time, home_team=home_team,
                                        away_team=away_team, home_prob=home_prob,
