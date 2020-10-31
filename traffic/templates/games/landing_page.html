@@ -9,14 +9,8 @@
 </head>
 <body>
     <section id="landing-main">
-        <nav>
-            <ul id="navbar">
-                <li><a href="{% url 'all_games' %}">Games</a></li>
-                <li><a href="{% url 'traffic' %}">Traffic</a></li>
-                <li><a href="{% url 'predictions' %}">Predictions</a></li>
-                <li><a href="{% url 'valuebets' %}">Value bets</a></li>
-            </ul>
-        </nav>
+        {% include 'games/navbar.html' %}
+
     </section>
 </body>
 </html>
