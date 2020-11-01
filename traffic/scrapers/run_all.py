@@ -1,4 +1,6 @@
 import sys, os, django
+from datetime import datetime
+
 from django.core.wsgi import get_wsgi_application
 
 
@@ -14,13 +16,33 @@ from traffic.scrapers.tomorrow_games import TomorrowGames
 
 
 if __name__ == '__main__':
-    gms = TomorrowGames()
-    gms.scrape()
+    file = open('run_log.txt', 'a')
+    file.write(f'\nStarted at: {datetime.now()}\n')
+    try:
+        gms = TomorrowGames()
+        gms.scrape()
+        file.write('--- Games for tomorrow - DONE\n')
+    except Exception:
+        file.write('--- Games for tomorrow - FAILED\n')
 
-    volume_scraper.scrape()
+    try:
+        volume_scraper.scrape()
+        file.write('--- Volume - DONE\n')
+    except Exception:
+        file.write('--- Volume - FAILED\n')
 
-    predictions = Predictions()
-    predictions.scrape()
+    try:
+        predictions = Predictions()
+        predictions.scrape()
+        file.write('--- Predictions - DONE\n')
+    except Exception:
+        file.write('--- Predictions - FAILED\n')
 
-    vb = ValueBets()
-    vb.scrape()
+    try:
+        vb = ValueBets()
+        vb.scrape()
+        file.write('--- Value Bets - DONE\n')
+    except Exception:
+        file.write('--- Value Bets - FAILED\n')
+
+    file.close()
