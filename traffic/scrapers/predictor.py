@@ -89,7 +89,7 @@ class Predictions:
             # PROBABILITIES
             probabilities = re.findall(self.REGEX["probabilities"], str(game))
             home_prob, draw_prob, away_prob = probabilities[0][0], probabilities[1][0], \
-                                                                                              probabilities[2][0]
+                                              probabilities[2][0]
 
             # PREDICTION SIGN
             pred_sign = re.search(self.REGEX["prediction"], str(game)).group(1)
@@ -167,8 +167,6 @@ class Predictions:
         all_games += [list(game) for game in matches_one_tomorrow] + [list(game) for game in matches_two_tomorrow]
         return all_games
 
-
 # if __name__ == '__main__':
 #     scraper = Predictions()
 #     scraper.scrape()
-
