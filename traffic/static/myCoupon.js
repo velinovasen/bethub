@@ -11,6 +11,12 @@ for (odd of HTMLSelectors.allOddsButtons()) {
 
 function addToCoupon(e) {
     e.preventDefault()
-    console.log(e.target.innerText)
-    
+    createMyBetField(e.target.parentElement.parentElement)
+}
+
+function createMyBetField(game) {
+    let [time, home_team, away_team, home_odd, draw_odd, away_odd] = game.getElementsByTagName('td');
+    console.log(`${home_team.innerText} - ${away_team.innerText} - ${home_odd.innerText} ${draw_odd.innerText} ${away_odd.innerText}`)
+    let myBetField = document.createElement('input');
+    myBetField.disabled = true
 }
