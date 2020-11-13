@@ -5,23 +5,52 @@ const HTMLSelectors = {
     drawOdd: () => document.getElementById('draw_odd'),
     awayOdd: () => document.getElementById('away_odd'),
     betsAppended: () => document.getElementById('games-appended'),
+    deleteGamesButton: () => document.getElementById('delete-coupon'),
+    totalOddsField: () => document.getElementById('total_odds_field'),
+
 }
 for (odd of HTMLSelectors.allOddsButtons()) {
     odd.addEventListener('click', addToCoupon)
 }
 
+HTMLSelectors.deleteGamesButton().addEventListener('click', cleanCoupon)
 
 function addToCoupon(e) {
     e.preventDefault()
+    checkIfInCoupon(e)
     HTMLSelectors.toggleDiv().style.display = 'inline-block';
-    console.log(e.target.parentElement.className)
-    createMyBetField(e.target.parentElement.parentElement, e.target.parentElement.className, e.target.innerText)
+    let odd = e.target.innerText;
+    createMyBetField(e.target.parentElement.parentElement, e.target.parentElement.className, odd)
+    calculateTotalOdds(odd)
+}
+
+function cleanCoupon(e) {
+    e.preventDefault()
+    HTMLSelectors.betsAppended().innerHTML = '';
+    HTMLSelectors.toggleDiv().style.display = 'none';
+    HTMLSelectors.totalOddsField().value = '';
+}
+
+function calculateTotalOdds(odd) {
+    totalOddsField = HTMLSelectors.totalOddsField()
+    if (totalOddsField.value !== ''){
+        console.log(totalOddsField.value * odd)
+        totalOddsField.value = (totalOddsField.value * odd).toFixed(2);
+    } else {
+        console.log(1 * odd)
+        totalOddsField.value = `${(1 * odd).toFixed(2)}`;
+    }
+}
+
+function checkIfInCoupon(e) {
+    let home_team = e.target.parentElement.parentElement.getElementsByClassName('teams_regular')[0].innerText;
+    console.log(home_team)
+
 }
 
 function createMyBetField(game, my_bet, my_odd) {
     let myBets = {home_odd: '1', draw_odd: 'X', away_odd: '2'};
     let [time, home_team, away_team, home_odd, draw_odd, away_odd] = game.getElementsByTagName('td');
-    console.log(`${home_team.innerText} - ${away_team.innerText} - ${home_odd.innerText} ${draw_odd.innerText} ${away_odd.innerText}`)
     let myBetDiv = document.createElement('div');
     myBetDiv.className = 'my-bet-div';
     let home_team_par = document.createElement('p');
