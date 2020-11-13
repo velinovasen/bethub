@@ -7,6 +7,7 @@ const HTMLSelectors = {
     betsAppended: () => document.getElementById('games-appended'),
     deleteGamesButton: () => document.getElementById('delete-coupon'),
     totalOddsField: () => document.getElementById('total_odds_field'),
+    homeTeamsInCoupon: () => document.getElementsByClassName('home-team-in-coupon'),
 
 }
 for (odd of HTMLSelectors.allOddsButtons()) {
@@ -17,11 +18,13 @@ HTMLSelectors.deleteGamesButton().addEventListener('click', cleanCoupon)
 
 function addToCoupon(e) {
     e.preventDefault()
-    checkIfInCoupon(e)
-    HTMLSelectors.toggleDiv().style.display = 'inline-block';
-    let odd = e.target.innerText;
-    createMyBetField(e.target.parentElement.parentElement, e.target.parentElement.className, odd)
-    calculateTotalOdds(odd)
+    let state = checkIfInCoupon(e);
+    if (state === 'notinside') {
+        HTMLSelectors.toggleDiv().style.display = 'inline-block';
+        let odd = e.target.innerText;
+        createMyBetField(e.target.parentElement.parentElement, e.target.parentElement.className, odd)
+        calculateTotalOdds(odd)
+    }
 }
 
 function cleanCoupon(e) {
@@ -43,9 +46,18 @@ function calculateTotalOdds(odd) {
 }
 
 function checkIfInCoupon(e) {
-    let home_team = e.target.parentElement.parentElement.getElementsByClassName('teams_regular')[0].innerText;
-    console.log(home_team)
-
+    let homeTeam = e.target.parentElement.parentElement.getElementsByClassName('teams_regular')[0].innerText;
+    console.log(homeTeam)
+    console.log(HTMLSelectors.betsAppended())
+    let allHomeTeams = HTMLSelectors.homeTeamsInCoupon();
+    let state = 'notinside';
+    Object.values(allHomeTeams).forEach(function(team) {
+        console.log(team.innerText);
+        if (team.innerText === homeTeam) {
+            return state = 'inside';
+        }
+    })
+    return state;
 }
 
 function createMyBetField(game, my_bet, my_odd) {
@@ -54,11 +66,15 @@ function createMyBetField(game, my_bet, my_odd) {
     let myBetDiv = document.createElement('div');
     myBetDiv.className = 'my-bet-div';
     let home_team_par = document.createElement('p');
+    home_team_par.className = 'home-team-in-coupon';
     let away_team_par = document.createElement('p');
     let sign_and_odd_div = document.createElement('div');
     sign_and_odd_div.className = 'sign-and-odd-div';
     let sign_par = document.createElement('p');
     let odd_par = document.createElement('p');
+    odd_par.id = 'odd-coupon-par'
+    let delButt = document.createElement('button');
+    delButt.addEventListener('click', removeGameFromCoupon)
 
     home_team_par.innerText = home_team.innerText;
     away_team_par.innerText = away_team.innerText;
@@ -67,9 +83,14 @@ function createMyBetField(game, my_bet, my_odd) {
 
     sign_and_odd_div.appendChild(sign_par);
     sign_and_odd_div.appendChild(odd_par);
+    sign_and_odd_div.appendChild(delButt);
     myBetDiv.appendChild(home_team_par);
     myBetDiv.appendChild(away_team_par);
     myBetDiv.appendChild(sign_and_odd_div);
 
     HTMLSelectors.betsAppended().appendChild(myBetDiv)
+}
+
+function removeGameFromCoupon(e) {
+    console.log(e)
 }

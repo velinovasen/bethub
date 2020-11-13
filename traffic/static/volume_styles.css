@@ -123,6 +123,7 @@ aside {
 }
 
 .sign-and-odd-div {
+
     display: inline-block;
 }
 
@@ -133,7 +134,13 @@ aside {
     border-color: lightskyblue;
 }
 
+#odd-coupon-par {
+    display: initial;
+}
+
 .my-bet-div {
+    padding-left: 1em;
+    text-align: left;
     border-style: groove;
     font-family: ui-monospace;
     font-size: 16px;
