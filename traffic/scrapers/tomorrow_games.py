@@ -66,8 +66,12 @@ class TomorrowGames:
             # FIND THE TIME
             try:
                 both_teams = re.search(self.REGEX["home_away_scheduled"], str(game))
-                home_team = both_teams.group(2)
-                away_team = both_teams.group(4)
+                home_team = str(both_teams.group(2))
+                away_team = str(both_teams.group(4))
+                if '&amp;' in home_team:
+                    home_team = home_team.replace('&amp;', 'n')
+                if '&amp;' in away_team:
+                    away_team = away_team.replace('&amp;', 'n')
                 if 'Group' in away_team or 'III' in home_team or 'PFL' in home_team:
                     continue
                 else:
@@ -87,6 +91,7 @@ class TomorrowGames:
         RegularGame.objects.all().delete()
         RegularGame.objects.bulk_create(the_bulk)
 
-# if __name__ == '__main__':
-#     tmr = TomorrowGames()
-#     tmr.scrape()
+
+if __name__ == '__main__':
+    tmr = TomorrowGames()
+    tmr.scrape()
