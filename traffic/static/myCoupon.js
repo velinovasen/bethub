@@ -8,6 +8,7 @@ const HTMLSelectors = {
     deleteGamesButton: () => document.getElementById('delete-coupon'),
     totalOddsField: () => document.getElementById('total_odds_field'),
     homeTeamsInCoupon: () => document.getElementsByClassName('home-team-in-coupon'),
+    currOddToTakeOut: () => document.getElementById('odd-coupon-par'),
 
 }
 for (odd of HTMLSelectors.allOddsButtons()) {
@@ -37,22 +38,17 @@ function cleanCoupon(e) {
 function calculateTotalOdds(odd) {
     totalOddsField = HTMLSelectors.totalOddsField()
     if (totalOddsField.value !== ''){
-        console.log(totalOddsField.value * odd)
         totalOddsField.value = (totalOddsField.value * odd).toFixed(2);
     } else {
-        console.log(1 * odd)
         totalOddsField.value = `${(1 * odd).toFixed(2)}`;
     }
 }
 
 function checkIfInCoupon(e) {
     let homeTeam = e.target.parentElement.parentElement.getElementsByClassName('teams_regular')[0].innerText;
-    console.log(homeTeam)
-    console.log(HTMLSelectors.betsAppended())
     let allHomeTeams = HTMLSelectors.homeTeamsInCoupon();
     let state = 'notinside';
     Object.values(allHomeTeams).forEach(function(team) {
-        console.log(team.innerText);
         if (team.innerText === homeTeam) {
             return state = 'inside';
         }
@@ -74,12 +70,14 @@ function createMyBetField(game, my_bet, my_odd) {
     let odd_par = document.createElement('p');
     odd_par.id = 'odd-coupon-par'
     let delButt = document.createElement('button');
+    delButt.id = 'remove-game-from-coupon-button';
+    delButt.textContent = 'X';
     delButt.addEventListener('click', removeGameFromCoupon)
 
     home_team_par.innerText = home_team.innerText;
     away_team_par.innerText = away_team.innerText;
     sign_par.innerText = myBets[my_bet];
-    odd_par.innerText = my_odd;
+    odd_par.innerText = `${Number.parseFloat(my_odd).toFixed(2)}`;
 
     sign_and_odd_div.appendChild(sign_par);
     sign_and_odd_div.appendChild(odd_par);
@@ -92,5 +90,12 @@ function createMyBetField(game, my_bet, my_odd) {
 }
 
 function removeGameFromCoupon(e) {
-    console.log(e)
+    let odd = e.target.parentElement.getElementsByTagName('p')[1].innerText
+    let totalOddsField = HTMLSelectors.totalOddsField()
+    totalOddsField.value = `${Number.parseFloat(totalOddsField.value / odd).toFixed(2)}`
+    if (totalOddsField.value == '1.00') {
+        totalOddsField.value = '';
+        HTMLSelectors.toggleDiv().style.display = 'none';
+    }
+    e.target.parentElement.parentElement.remove()
 }

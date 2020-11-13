@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <section>
+    <div id="table-section">
   <!--for demo wrap-->
         {% include 'games/navbar.html' %}
 
@@ -45,21 +45,24 @@
         </table>
 
       </div>
-    </section>
-    <aside>
-        <div id="my_coupon">
-            <div>My coupon:</div>
-            <input id="total_odds_field" placeholder="Total odds" disabled=true/>
-        </div>
-            <div id="toggle-div">
-                <div id="send-button-div">
-                    <button id="delete-coupon" type="submit">Delete</button>
-                    <button id="send-button" type="submit">Send to market</button>
-                </div>
-            <div id="games-appended"></div>
+    </div>
+    <div id="space-right">
+        <aside>
+            <div id="my_coupon">
+                <div>My coupon:</div>
+                <input id="total_odds_field" placeholder="Total odds" disabled=true/>
+            </div>
+                <div id="toggle-div">
+                    <div id="send-button-div">
+                        <button id="delete-coupon" type="submit">Delete</button>
+                        <button id="send-button" type="submit">Send to market</button>
+                    </div>
+                <div id="games-appended"></div>
 
-        </div>
-    </aside>
+            </div>
+        </aside>
+    </div>
+    <footer></footer>
 </body>
 <script src="{% static 'myCoupon.js' %}"></script>
 </html>

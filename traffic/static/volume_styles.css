@@ -1,3 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+#table-section {
+    width: 60%;
+    margin-left: 20%;
+    float: left;
+}
+
 .time_regular{
     width: 5em;
 }
@@ -127,11 +137,19 @@ aside {
     display: inline-block;
 }
 
+#remove-game-from-coupon-button {
+    border: none;
+    background-color: turquoise;
+    margin-left: 6em;
+    width: 1.4em;
+    height: 1.7em;
+    font-size: 0.8em;
+}
+
 #games-appended {
+
     border-radius: 4px;
-    border-style: groove;
     border-width: 3px;
-    border-color: lightskyblue;
 }
 
 #odd-coupon-par {
@@ -139,13 +157,13 @@ aside {
 }
 
 .my-bet-div {
+    border-bottom: 1px solid;
+    background-color: rgb(37,189,166);
     padding-left: 1em;
     text-align: left;
-    border-style: groove;
     font-family: ui-monospace;
     font-size: 16px;
     font-weight: bold;
-    border-color: lightgreen;
 }
 
 p {
@@ -165,6 +183,10 @@ body{
 }
 section{
   margin: 0px 300px;
+}
+
+footer {
+    height: 100px;
 }
 
 /* for custom scrollbar for webkit browser*/
