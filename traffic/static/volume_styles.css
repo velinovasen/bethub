@@ -52,7 +52,7 @@ table{
   height:700px;
   overflow-x:auto;
   margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgb(179,225,227,0.3);
 }
 th{
   padding: 20px 15px;
@@ -117,10 +117,35 @@ aside {
     disabled: true;
 }
 
-#sent-button {
-    background: rgb(150,0,0);
+#toggle-div {
+    display: none;
 }
 
+.sign-and-odd-div {
+    display: inline-block;
+}
+
+#games-appended {
+    border-style: groove;
+    border-width: 3px;
+    border-color: lightskyblue;
+}
+
+.my-bet-div {
+    border-style: groove;
+    font-family: ui-monospace;
+    font-size: 16px;
+    font-weight: bold;
+    border-color: lightgreen;
+}
+
+p {
+    display: table-row;
+}
+
+#send-button-div {
+    display: inline-block;
+}
 /* demo styles */
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
