@@ -15,6 +15,7 @@ const HTMLSelectors = {
 
 
 }
+
 for (odd of HTMLSelectors.allOddsButtons()) {
     odd.addEventListener('click', addToCoupon)
 }
@@ -22,6 +23,7 @@ for (odd of HTMLSelectors.allOddsButtons()) {
 HTMLSelectors.deleteGamesButton().addEventListener('click', cleanCoupon)
 
 HTMLSelectors.enterStakeField().addEventListener('input', updateTotalOdds)
+
 
 function addToCoupon(e) {
     e.preventDefault()
@@ -114,7 +116,6 @@ function removeGameFromCoupon(e) {
     totalOddsField.value = `${Number.parseFloat(totalOddsField.value / odd).toFixed(2)}`
     if (totalOddsField.value == '1.00') {
         cleanCoupon(e)
-        
         HTMLSelectors.toggleDiv().style.display = 'none';
         HTMLSelectors.toggleStakeProfit().style.display = 'none';
     }
