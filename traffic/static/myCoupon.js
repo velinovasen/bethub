@@ -9,6 +9,10 @@ const HTMLSelectors = {
     totalOddsField: () => document.getElementById('total_odds_field'),
     homeTeamsInCoupon: () => document.getElementsByClassName('home-team-in-coupon'),
     currOddToTakeOut: () => document.getElementById('odd-coupon-par'),
+    enterStakeField: () => document.getElementById('enter-stake-field'),
+    totalProfitPar: () => document.getElementById('total_profit'),
+    toggleStakeProfit: () => document.getElementById('toggle-stake-and-profit'),
+
 
 }
 for (odd of HTMLSelectors.allOddsButtons()) {
@@ -17,11 +21,14 @@ for (odd of HTMLSelectors.allOddsButtons()) {
 
 HTMLSelectors.deleteGamesButton().addEventListener('click', cleanCoupon)
 
+HTMLSelectors.enterStakeField().addEventListener('input', updateTotalOdds)
+
 function addToCoupon(e) {
     e.preventDefault()
     let state = checkIfInCoupon(e);
     if (state === 'notinside') {
         HTMLSelectors.toggleDiv().style.display = 'inline-block';
+        HTMLSelectors.toggleStakeProfit().style.display = 'inline-block';
         let odd = e.target.innerText;
         createMyBetField(e.target.parentElement.parentElement, e.target.parentElement.className, odd)
         calculateTotalOdds(odd)
@@ -32,6 +39,7 @@ function cleanCoupon(e) {
     e.preventDefault()
     HTMLSelectors.betsAppended().innerHTML = '';
     HTMLSelectors.toggleDiv().style.display = 'none';
+    HTMLSelectors.toggleStakeProfit().style.display = 'none';
     HTMLSelectors.totalOddsField().value = '';
 }
 
@@ -55,6 +63,14 @@ function checkIfInCoupon(e) {
     })
     return state;
 }
+
+function updateTotalOdds(e) {
+    if (Number(e.target.value) > 0) {
+        HTMLSelectors.totalProfitPar().value = Number.parseFloat(HTMLSelectors.totalOddsField().value * e.target.value).toFixed(2);
+    } else {
+        HTMLSelectors.totalProfitPar().value = '';
+    }
+} 
 
 function createMyBetField(game, my_bet, my_odd) {
     let myBets = {home_odd: '1', draw_odd: 'X', away_odd: '2'};
@@ -96,6 +112,7 @@ function removeGameFromCoupon(e) {
     if (totalOddsField.value == '1.00') {
         totalOddsField.value = '';
         HTMLSelectors.toggleDiv().style.display = 'none';
+        HTMLSelectors.toggleStakeProfit().style.display = 'none';
     }
     e.target.parentElement.parentElement.remove()
 }
