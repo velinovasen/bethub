@@ -1,3 +1,4 @@
 A web-crawler which checks multiple websites and stores the data into postgres.
-Currently working on it to be something like a website for predictions, based on the crawled information and planning
-to extend it to have the function to be a demo betting website, where you can create multiple bots and test multiple strategies.
+Then we use data to create a betting market, where you could be a bookmaker as easily as
+placing bets on the market. There is few more widgets that you could possibly use for information
+and to keep you on track with the trends.
