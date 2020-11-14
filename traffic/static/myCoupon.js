@@ -32,6 +32,7 @@ function addToCoupon(e) {
         let odd = e.target.innerText;
         createMyBetField(e.target.parentElement.parentElement, e.target.parentElement.className, odd)
         calculateTotalOdds(odd)
+        updateTotalOdds(e)
     }
 }
 
@@ -41,6 +42,8 @@ function cleanCoupon(e) {
     HTMLSelectors.toggleDiv().style.display = 'none';
     HTMLSelectors.toggleStakeProfit().style.display = 'none';
     HTMLSelectors.totalOddsField().value = '';
+    HTMLSelectors.totalProfitPar().value = '';
+    HTMLSelectors.enterStakeField().value = '';
 }
 
 function calculateTotalOdds(odd) {
@@ -65,8 +68,8 @@ function checkIfInCoupon(e) {
 }
 
 function updateTotalOdds(e) {
-    if (Number(e.target.value) > 0) {
-        HTMLSelectors.totalProfitPar().value = Number.parseFloat(HTMLSelectors.totalOddsField().value * e.target.value).toFixed(2);
+    if (Number(HTMLSelectors.enterStakeField().value) > 0) {
+        HTMLSelectors.totalProfitPar().value = Number.parseFloat(HTMLSelectors.totalOddsField().value * HTMLSelectors.enterStakeField().value).toFixed(2);
     } else {
         HTMLSelectors.totalProfitPar().value = '';
     }
@@ -110,9 +113,11 @@ function removeGameFromCoupon(e) {
     let totalOddsField = HTMLSelectors.totalOddsField()
     totalOddsField.value = `${Number.parseFloat(totalOddsField.value / odd).toFixed(2)}`
     if (totalOddsField.value == '1.00') {
-        totalOddsField.value = '';
+        cleanCoupon(e)
+        
         HTMLSelectors.toggleDiv().style.display = 'none';
         HTMLSelectors.toggleStakeProfit().style.display = 'none';
     }
+    updateTotalOdds(e)
     e.target.parentElement.parentElement.remove()
 }
