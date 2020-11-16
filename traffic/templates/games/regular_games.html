@@ -1,27 +1,20 @@
+{% extends 'games/shared/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block site_title %}BETHUB{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'volume_styles.css' %}">
-
-</head>
 <body>
     <div id="table-section">
-  <!--for demo wrap-->
         {% include 'games/partials/navbar.html' %}
-
-        <h1>ALL GAMES FOR TODAY</h1>
-        {% include 'games/partials/tables/all_games.html' %}
-        <div id="space-right">
-            <aside>
-                {% include 'games/partials/my_coupon.html' %}
-            </aside>
-        </div>
+        {% block header_content %}
+            <h1>ALL GAMES FOR TODAY</h1>
+        {% endblock %}
+        {% block site_content %}
+            {% include 'games/partials/tables/all_games.html' %}
+            {% include 'games/partials/my_coupon.html' %}
+        {% endblock %}
     </div>
     <footer></footer>
 </body>
+{% block body_end_scripts %}
 <script src="{% static 'js/myCoupon.js' %}"></script>
+{% endblock %}
 </html>
