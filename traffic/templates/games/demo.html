@@ -2,19 +2,12 @@
 {% load static %}
     <title>{% block site_title %}BETHUB{% endblock %}</title>
 <body>
-    <div id="table-section">
-        {% include 'games/partials/navbar.html' %}
-        {% block header_content %}
-            <h1>ALL GAMES FOR TODAY</h1>
-        {% endblock %}
-        {% block site_content %}
-            {% include 'games/partials/tables/all_games.html' %}
-            {% include 'games/partials/my_coupon.html' %}
-        {% endblock %}
-    </div>
-    <footer></footer>
+    {% block header_content %}
+    <h1>THE MOST PLACED ODDS IN EUROPE AT THE MOMENT</h1>
+    {% endblock %}
+    {% block site_content %}
+    {% include 'games/partials/tables/traffic_volume.html' %}
+    {% endblock %}
 </body>
-{% block body_end_scripts %}
-<script src="{% static 'js/myCoupon.js' %}"></script>
-{% endblock %}
 </html>
+

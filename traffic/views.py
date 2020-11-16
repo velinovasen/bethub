@@ -33,5 +33,5 @@ def regular_games(request):
 
 
 def demo_view(request):
-    context = {"all_regular_games": RegularGame.objects.all()}
+    context = {"all_regular_games": BetsVolume.objects.all()}
     return render(request, 'games/demo.html', context)
