@@ -4,67 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>All Games</title>
+    <title>{% block site_title %}BETHUB{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'volume_styles.css' %}">
 
 </head>
 <body>
     <div id="table-section">
   <!--for demo wrap-->
-        {% include 'games/navbar.html' %}
+        {% include 'games/partials/navbar.html' %}
 
-  <h1>ALL GAMES FOR TODAY</h1>
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th class="time_regular">Time</th>
-            <th class="teams_regular"><div>Home Team</div></th>
-          <th class="teams_regular"><div>Away Team</div></th>
-            <th>Home Odds</th>
-            <th>Draw Odds</th>
-            <th>Away Odds</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-      {% for game in all_regular_games %}
-          <tr>
-              <td class="time_regular">{{ game.time }}</td>
-              <td class="teams_regular">{{ game.home_team }}</td>
-              <td class="teams_regular">{{ game.away_team }}</td>
-              <td class="home_odd"><button class="odds_column home">{{ game.home_odd }}</button></td>
-              <td class="draw_odd"><button class="odds_column draw">{{ game.draw_odd }}</button></td>
-              <td class="away_odd"><button class="odds_column away">{{ game.away_odd }}</button></td>
-          </tr>
-          {% endfor %}
-          </tbody>
-        </table>
-
-      </div>
-    </div>
-    <div id="space-right">
-        <aside>
-            <div id="my_coupon">
-                <div>My coupon:</div>
-                <input id="total_odds_field" placeholder="Total odds" disabled=true/>
-                <div id="toggle-stake-and-profit">
-                  <input id="total_profit" disabled=true placeholder="Total profit"></input>
-                  <input id="enter-stake-field" type="text" placeholder="Enter your stake"></input>
-                </div>
-              </div>
-                <div id="toggle-div">
-                    <div id="send-button-div">
-                        <button id="delete-coupon" type="submit">Delete</button>
-                        <button id="send-button" type="submit">Send to market</button>
-                    </div>
-                <div id="games-appended"></div>
-
-            </div>
-        </aside>
+        <h1>ALL GAMES FOR TODAY</h1>
+        {% include 'games/partials/tables/all_games.html' %}
+        <div id="space-right">
+            <aside>
+                {% include 'games/partials/my_coupon.html' %}
+            </aside>
+        </div>
     </div>
     <footer></footer>
 </body>
