@@ -1,51 +1,15 @@
+{% extends 'games/shared/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Traffic</title>
-    <link rel="stylesheet" href="{% static 'volume_styles.css' %}">
-</head>
+{% load static %}
+    <title>{% block site_title %}BETHUB{% endblock %}</title>
 <body>
-    <section>
-  <!--for demo wrap-->
-        {% include 'games/partials/navbar.html' %}
-
-  <h1>THE MOST PLACED ODDS IN EUROPE AT THE MOMENT</h1>
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th>Day</th>
-          <th>Time</th>
-          <th>Home Team</th>
-          <th>Away Team</th>
-          <th>Bet</th>
-          <th>Odds</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="1">
-      <tbody>
-      {% for bet in all_bets %}
-      <tr>
-          <td>{{ bet.day }}</td>
-          <td>{{ bet.time }}</td>
-          <td>{{ bet.home_team }}</td>
-          <td>{{ bet.away_team }}</td>
-          <td>{{ bet.final_bet }}</td>
-          <td>{{ bet.odds }}</td>
-          <td>{{ bet.amount }} €</td>
-      </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
+    {% block header_content %}
+    <h1>THE MOST PLACED ODDS IN EUROPE AT THE MOMENT</h1>
+    {% endblock %}
+    {% block site_content %}
+    {% include 'games/partials/tables/traffic_volume.html' %}
+    {% endblock %}
 </body>
 </html>
+
 
