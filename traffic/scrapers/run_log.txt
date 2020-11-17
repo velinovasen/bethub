@@ -137,3 +137,9 @@ Started at: 2020-11-17 22:41:04.519042
 --- Volume - DONE
 --- Predictions - DONE
 --- Value Bets - DONE
+
+Started at: 2020-11-17 23:56:48.291294
+--- Games for tomorrow - DONE
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
