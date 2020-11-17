@@ -95,3 +95,45 @@ Started at: 2020-11-17 19:21:40.876310
 --- Volume - DONE
 --- Predictions - DONE
 --- Value Bets - DONE
+
+Started at: 2020-11-17 21:27:59.938019
+--- Games for tomorrow - FAILED
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
+
+Started at: 2020-11-17 21:39:32.402079
+--- Games for tomorrow - FAILED
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
+
+Started at: 2020-11-17 21:46:24.030058
+--- Games for tomorrow - DONE
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
+
+Started at: 2020-11-17 21:57:39.988388
+--- Games for tomorrow - DONE
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
+
+Started at: 2020-11-17 22:16:04.195231
+--- Games for tomorrow - DONE
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
+
+Started at: 2020-11-17 22:20:04.908993
+--- Games for tomorrow - DONE
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
+
+Started at: 2020-11-17 22:41:04.519042
+--- Games for tomorrow - DONE
+--- Volume - DONE
+--- Predictions - DONE
+--- Value Bets - DONE
