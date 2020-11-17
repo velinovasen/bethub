@@ -62,9 +62,11 @@ class ValueBet(models.Model):
 
 
 class RegularGame(models.Model):
+    id = models.AutoField(primary_key=True)
     time = models.TimeField()
     home_team = models.CharField(max_length=40)
     away_team = models.CharField(max_length=40)
+    score = models.CharField(max_length=7, default='-')
     home_odd = models.FloatField()
     draw_odd = models.FloatField()
     away_odd = models.FloatField()

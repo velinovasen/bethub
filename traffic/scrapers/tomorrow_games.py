@@ -78,10 +78,9 @@ class TomorrowGames:
                     time = re.search(self.REGEX["time"], str(game)).group(1)
                     try:
                         odds = re.findall(self.REGEX["odds"], str(game))
-                        [home_odd, draw_odd, away_odd] = [odds[0][1], odds[2][1], odds[4][1]]
+                        [home_odd, draw_odd, away_odd] = [odds[0][1], odds[2][1], odds[3][1]]
                         the_bulk.append(RegularGame(time=time, home_team=home_team, away_team=away_team,
                                                     home_odd=home_odd, draw_odd=draw_odd, away_odd=away_odd))
-                        # print(f"{time} _ {home_team} --- {away_team} __ {home_odd} {draw_odd} {away_odd}")
 
                     except ValueError:
                         print('Most likely, we got missing odds')
@@ -92,6 +91,6 @@ class TomorrowGames:
         RegularGame.objects.bulk_create(the_bulk)
 
 
-if __name__ == '__main__':
-    tmr = TomorrowGames()
-    tmr.scrape()
+# if __name__ == '__main__':
+#     tmr = TomorrowGames()
+#     tmr.scrape()
