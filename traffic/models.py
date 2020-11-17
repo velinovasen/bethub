@@ -73,3 +73,16 @@ class RegularGame(models.Model):
         return f'{self.home_team} - {self.away_team} ' \
                f'{self.home_odd} {self.draw_odd} {self.away_odd}'
 
+
+class ResultGame(models.Model):
+    time = models.TimeField()
+    home_team = models.CharField(max_length=40)
+    away_team = models.CharField(max_length=40)
+    score = models.CharField(max_length=7)
+    home_odd = models.FloatField()
+    draw_odd = models.FloatField()
+    away_odd = models.FloatField()
+
+    def __str__(self):
+        return f'{self.home_team} - {self.away_team} {self.score} ' \
+               f'{self.home_odd} {self.draw_odd} {self.away_odd}'

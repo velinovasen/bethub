@@ -1,15 +1,12 @@
 {% extends 'games/shared/base.html' %}
 {% load static %}
 {% load static %}
-    <title>{% block site_title %}BETHUB{% endblock %}</title>
-<body>
+    {% block site_title %}BETHUB | TRAFFIC{% endblock %}
     {% block header_content %}
     <h1>THE MOST PLACED ODDS IN EUROPE AT THE MOMENT</h1>
     {% endblock %}
     {% block site_content %}
     {% include 'games/partials/tables/traffic_volume.html' %}
     {% endblock %}
-</body>
-</html>
 
 
