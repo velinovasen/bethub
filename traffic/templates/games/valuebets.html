@@ -1,62 +1,10 @@
+{% extends 'games/shared/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Value Bets</title>
-    <link rel="stylesheet" href="{% static 'volume_styles.css' %}">
-</head>
-<body>
-    <section>
-  <!--for demo wrap-->
-        {% include 'games/partials/navbar.html' %}
-
-  <h1>CURRENT VALUE BETS</h1>
-  <div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th class="teams_blocks_header">Home Team</th>
-          <th class="teams_blocks_header">Away Team</th>
-            <th>Home %</th>
-            <th>Draw %</th>
-            <th>Away %</th>
-            <th>Bet</th>
-            <th>Prediction Odds</th>
-            <th>Home Odds</th>
-            <th>Draw Odds</th>
-            <th>Away Odds</th>
-            <th>Value %</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-      {% for vb in all_valuebets %}
-      <tr>
-          <td>{{ vb.date }}</td>
-          <td>{{ vb.time }}</td>
-          <td class="teams_blocks">{{ vb.home_team }}</td>
-          <td class="teams_blocks">{{ vb.away_team }}</td>
-          <td>{{ vb.home_prob }}</td>
-          <td>{{ vb.draw_prob }}</td>
-          <td>{{ vb.away_prob }}</td>
-          <td>{{ vb.bet_sign }}</td>
-          <td>{{ vb.odds_for_pred }}</td>
-          <td>{{ vb.home_odd }}</td>
-          <td>{{ vb.draw_odd }}</td>
-          <td>{{ vb.away_odd }}</td>
-          <td>{{ vb.value_percent }}</td>
-      </tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
-</body>
-</html>
+{% block site_title %}BETHUB | VALUE BETS{% endblock %}
+    {% include 'games/partials/navbar.html' %}
+    {% block header_content %}
+        <h1>VALUE BETS</h1>
+    {% endblock %}
+    {% block site_content %}
+        {% include 'games/partials/tables/valuebets_table.html' %}
+    {% endblock %}

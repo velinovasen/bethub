@@ -20,9 +20,9 @@
               <td class="time_regular">{{ game.time }}</td>
               <td class="teams_regular">{{ game.home_team }}</td>
               <td class="teams_regular">{{ game.away_team }}</td>
-              <td class="home_odd"><button class="odds_column home">{{ game.home_odd }}</button></td>
-              <td class="draw_odd"><button class="odds_column draw">{{ game.draw_odd }}</button></td>
-              <td class="away_odd"><button class="odds_column away">{{ game.away_odd }}</button></td>
+              <td class="home_odd"><button class="odds_column home">{{ game.home_odd|floatformat:2 }}</button></td>
+              <td class="draw_odd"><button class="odds_column draw">{{ game.draw_odd|floatformat:2 }}</button></td>
+              <td class="away_odd"><button class="odds_column away">{{ game.away_odd|floatformat:2 }}</button></td>
           </tr>
           {% endfor %}
        </tbody>

@@ -23,7 +23,7 @@
           <td>{{ bet.home_team }}</td>
           <td>{{ bet.away_team }}</td>
           <td>{{ bet.final_bet }}</td>
-          <td>{{ bet.odds }}</td>
+          <td>{{ bet.odds|floatformat:2 }}</td>
           <td>{{ bet.amount }} €</td>
       </tr>
       {% endfor %}

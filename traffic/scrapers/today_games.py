@@ -14,6 +14,7 @@ application = get_wsgi_application()
 
 from traffic.models import RegularGame
 
+
 def get_tomorrow_date():
     datetime.today().strftime('%Y-%m-%d')
     tomorrow_date = (datetime.today() + timedelta(hours=24)).strftime('%Y-%m-%d')
