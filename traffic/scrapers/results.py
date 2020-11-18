@@ -1,4 +1,7 @@
+import json
 import sys, os, django
+
+from django.core import serializers
 from selenium.webdriver import ChromeOptions, Chrome
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
@@ -12,7 +15,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bethub.settings')
 django.setup()
 application = get_wsgi_application()
 
-from traffic.models import RegularGame
+from traffic.models import RegularGame, ResultGame
 
 
 def get_yesterday_date():
@@ -22,7 +25,6 @@ def get_yesterday_date():
 
 
 class TomorrowGames:
-
     WEB_LINKS = {
         "today": 'https://www.oddsportal.com/matches/',
         "yesterday": 'https://www.oddsportal.com/matches/soccer/' + get_yesterday_date(),
@@ -73,7 +75,7 @@ class TomorrowGames:
         the_bulk = []
         scores = []
         for game in games:
-            #print(game)
+            # print(game)
             score = re.search(self.REGEX['score'], str(game))
             try:
                 if score:
@@ -95,14 +97,25 @@ class TomorrowGames:
                         print(f'{home_team} {score} {away_team}')
 
                     qset = RegularGame.objects.filter(home_team=home_team, away_team=away_team)
-                    if qset:
-                        qset.update(score=score)
+                    szd_qset = json.loads(serializers.serialize('json', qset))[0]
+
+                    res_game = ResultGame(pk=szd_qset['pk'], time=szd_qset['fields']['time'], home_team=szd_qset['fields']['home_team'],
+                                          away_team=szd_qset['fields']['away_team'], score=score,
+                                          home_odd=szd_qset['fields']['home_odd'],
+                                          draw_odd=szd_qset['fields']['draw_odd'],
+                                          away_odd=szd_qset['fields']['away_odd'])
+
+                    if not ResultGame.objects.filter(pk=szd_qset['pk']).exists():
+                        print('NQMAME')
+                        the_bulk.append(res_game)
+                    print(res_game)
 
             except Exception as e:
                 print(e)
 
         print(the_bulk)
-        # RegularGame.objects.all().delete()
+        ResultGame.objects.bulk_create(the_bulk)
+
 
 if __name__ == '__main__':
     tmr = TomorrowGames()
