@@ -14,6 +14,7 @@ application = get_wsgi_application()
 
 from traffic.models import RegularGame
 
+
 def get_tomorrow_date(token):
     datetime.today().strftime('%Y-%m-%d')
     tomorrow_date = (datetime.today() + timedelta(hours=24)).strftime('%Y-%m-%d')
@@ -23,7 +24,6 @@ def get_tomorrow_date(token):
 
 
 class TomorrowGames:
-
     WEB_LINKS = {
         "today_oddsportal": 'https://www.oddsportal.com/matches/',
         "oddsportal": 'https://www.oddsportal.com/matches/soccer/' + get_tomorrow_date('link')
@@ -38,7 +38,6 @@ class TomorrowGames:
     }
 
     def scrape(self):
-        RegularGame.objects.all().delete()
         for link in self.WEB_LINKS.keys():
             # OPEN THE BROWSER
             driver = self.open_the_browser(link)
@@ -99,11 +98,16 @@ class TomorrowGames:
                         except ValueError:
                             print('Most likely, we got missing odds')
 
-                        the_bulk.append(RegularGame(time=time, home_team=home_team, away_team=away_team,
-                                                    home_odd=home_odd, draw_odd=draw_odd, away_odd=away_odd))
+                        datetime.today().strftime('%Y-%m-%d')
+                        last_48h = (datetime.today() - timedelta(hours=48)).strftime('%Y-%m-%d')
+
+                        if not RegularGame.objects.filter(time=time, home_team=home_team, away_team=away_team,
+                                                          added_timestamp__gte=last_48h).exists():
+                            the_bulk.append(RegularGame(time=time, home_team=home_team, away_team=away_team,
+                                                        home_odd=home_odd, draw_odd=draw_odd, away_odd=away_odd))
                 except AttributeError:
                     continue
-
+        print(the_bulk)
         RegularGame.objects.bulk_create(the_bulk)
 
 

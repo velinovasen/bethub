@@ -70,10 +70,11 @@ class RegularGame(models.Model):
     home_odd = models.FloatField()
     draw_odd = models.FloatField()
     away_odd = models.FloatField()
+    added_timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.id} {self.time} {self.home_team} - {self.away_team} ' \
-               f'{self.home_odd} {self.draw_odd} {self.away_odd}'
+               f'{self.home_odd} {self.draw_odd} {self.away_odd} - {self.added_timestamp}'
 
 
 class ResultGame(models.Model):
