@@ -4,7 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 from time import sleep
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from django.core.wsgi import get_wsgi_application
 
 sys.path.append('C:\\Users\\Asen\\Desktop\\bethub\\bethub')
@@ -84,9 +84,13 @@ class TomorrowGames:
                     if 'Group' in away_team or 'III' in home_team or 'PFL' in home_team:
                         continue
                     else:
-                        time = re.search(self.REGEX["time"], str(game)).group(1)
                         if link == 'oddsportal':
-                            time += ' ' + get_tomorrow_date('not link')
+                            date_model = (date.today() + timedelta(hours=24)).strftime('%Y-%m-%d')
+                        else:
+                            date_model = date.today().strftime('%Y-%m-%d')
+                        time = re.search(self.REGEX["time"], str(game)).group(1)
+
+                        print(date_model)
                         home_odd, draw_odd, away_odd = '', '', ''
                         try:
                             odds = re.findall(self.REGEX["odds"], str(game))
@@ -98,19 +102,18 @@ class TomorrowGames:
                         except ValueError:
                             print('Most likely, we got missing odds')
 
-                        datetime.today().strftime('%Y-%m-%d')
                         last_48h = (datetime.today() - timedelta(hours=48)).strftime('%Y-%m-%d')
 
-                        if not RegularGame.objects.filter(time=time, home_team=home_team, away_team=away_team,
-                                                          added_timestamp__gte=last_48h).exists():
-                            the_bulk.append(RegularGame(time=time, home_team=home_team, away_team=away_team,
-                                                        home_odd=home_odd, draw_odd=draw_odd, away_odd=away_odd))
+                        if not RegularGame.objects.filter(time=time, home_team=home_team,
+                                                          away_team=away_team, added_timestamp__gte=last_48h).exists():
+                            the_bulk.append(RegularGame(time=time, home_team=home_team,
+                                                        away_team=away_team, home_odd=home_odd,
+                                                        draw_odd=draw_odd, away_odd=away_odd))
                 except AttributeError:
                     continue
-        print(the_bulk)
         RegularGame.objects.bulk_create(the_bulk)
 
 
-if __name__ == '__main__':
-    tmr = TomorrowGames()
-    tmr.scrape()
+# if __name__ == '__main__':
+#     tmr = TomorrowGames()
+#     tmr.scrape()

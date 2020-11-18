@@ -23,5 +23,6 @@ urlpatterns = [
     path('predictions/', views.predictions, name='predictions'),
     path('valuebets/', views.valuebets, name='valuebets'),
     path('', views.regular_games, name='all_games'),
+    path('results/', views.results_view, name='results'),
     path('demo/', views.demo_view, name='demo_view'),
 ]

@@ -1,6 +1,8 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import BetsVolume, Prediction, ValueBet, RegularGame
+from .models import BetsVolume, Prediction, ValueBet, RegularGame, ResultGame
+
 
 # Create your views here.
 
@@ -33,5 +35,10 @@ def regular_games(request):
 
 
 def demo_view(request):
-    context = {"all_regular_games": BetsVolume.objects.all()}
+    context = {"all_regular_games": ResultGame.objects.all()}
     return render(request, 'games/demo.html', context)
+
+
+def results_view(request):
+    context = {"all_regular_games": ResultGame.objects.all()}
+    return render(request, 'games/results.html', context)
