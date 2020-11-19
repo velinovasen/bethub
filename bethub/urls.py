@@ -24,5 +24,7 @@ urlpatterns = [
     path('valuebets/', views.valuebets, name='valuebets'),
     path('', views.regular_games, name='all_games'),
     path('results/', views.results_view, name='results'),
+    path('registration/', views.register_user, name='registration'),
     path('demo/', views.demo_view, name='demo_view'),
+
 ]

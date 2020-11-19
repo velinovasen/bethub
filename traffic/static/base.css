@@ -202,6 +202,33 @@ footer {
     height: 100px;
 }
 
+form {
+    width: 99%;
+    margin-top: 3%;
+    display: table;
+    text-align: center;
+}
+
+form label {
+    margit-top: 10%;
+}
+
+form input, label {
+    display: table-row;
+}
+
+form button {
+    margin-top: 1%;
+}
+
+form span {
+    display: none;
+}
+
+#have-acc-log-in {
+    display: block;
+}
+
 /* for custom scrollbar for webkit browser*/
 
 ::-webkit-scrollbar {

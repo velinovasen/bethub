@@ -22,6 +22,10 @@ class Trends:
 
         driver.close()
 
+        self.append_trends(all_trends)
+
+
+
     def get_the_trends(self, driver):
         # NOW WE SCRAPE THE TRENDS ONLY FOR TODAY AND TOMORROW, BUT WE CAN EASILY ADD
         # OTHER DAYS(Weekend, Serie A, Premier League, etc.) BY JUST ADDING THEIR
@@ -49,8 +53,8 @@ class Trends:
 
         for event in all_events:
             print(event)
-            all_trends = re.split(r'[a-z][A-Z]+', event)
-            all_separators = re.finditer(r'[a-z][A-Z]+', event)
+            all_trends = re.split(r'[a-z)][A-ZÑ]+', event)
+            all_separators = re.finditer(r'[a-z)][A-ZÑ]+', event)
             counter = 0
 
             for match in all_separators:
@@ -66,8 +70,14 @@ class Trends:
                 counter += 1
 
             full_trends_list += [all_trends]
-        [print(game) for game in full_trends_list]
         return full_trends_list
+
+    def append_trends(self, full_trends_list):
+        the_bulk = []
+        for game in full_trends_list:
+            for num in range(len(game)):
+                print(game[num])
+
 
     def open_the_browser(self):
         options = ChromeOptions()

@@ -117,6 +117,6 @@ class TomorrowGames:
         ResultGame.objects.bulk_create(the_bulk)
 
 
-# if __name__ == '__main__':
-#     tmr = TomorrowGames()
-#     tmr.scrape()
+if __name__ == '__main__':
+    tmr = TomorrowGames()
+    tmr.scrape()

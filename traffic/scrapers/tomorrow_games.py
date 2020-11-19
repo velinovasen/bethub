@@ -106,7 +106,7 @@ class TomorrowGames:
 
                         if not RegularGame.objects.filter(time=time, home_team=home_team,
                                                           away_team=away_team, added_timestamp__gte=last_48h).exists():
-                            the_bulk.append(RegularGame(time=time, home_team=home_team,
+                            the_bulk.append(RegularGame(date=date_model, time=time, home_team=home_team,
                                                         away_team=away_team, home_odd=home_odd,
                                                         draw_odd=draw_odd, away_odd=away_odd))
                 except AttributeError:
@@ -115,6 +115,6 @@ class TomorrowGames:
         RegularGame.objects.bulk_create(the_bulk)
 
 
-if __name__ == '__main__':
-    tmr = TomorrowGames()
-    tmr.scrape()
+# if __name__ == '__main__':
+#     tmr = TomorrowGames()
+#     tmr.scrape()
