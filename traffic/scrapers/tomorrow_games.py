@@ -111,9 +111,10 @@ class TomorrowGames:
                                                         draw_odd=draw_odd, away_odd=away_odd))
                 except AttributeError:
                     continue
+
         RegularGame.objects.bulk_create(the_bulk)
 
 
-# if __name__ == '__main__':
-#     tmr = TomorrowGames()
-#     tmr.scrape()
+if __name__ == '__main__':
+    tmr = TomorrowGames()
+    tmr.scrape()

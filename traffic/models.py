@@ -90,3 +90,17 @@ class ResultGame(models.Model):
     def __str__(self):
         return f'{self.id} {self.time} {self.home_team} - {self.away_team} {self.score} ' \
                f'{self.home_odd} {self.draw_odd} {self.away_odd}'
+
+
+class TrendModel(models.Model):
+    id = models.AutoField(primary_key=True)
+    trend_1 = models.CharField(max_length=500, blank=True, null=True)
+    trend_2 = models.CharField(max_length=500, blank=True, null=True)
+    trend_3 = models.CharField(max_length=500, blank=True, null=True)
+    trend_4 = models.CharField(max_length=500, blank=True, null=True)
+    trend_5 = models.CharField(max_length=500, blank=True, null=True)
+    trend_6 = models.CharField(max_length=500, blank=True, null=True)
+    trend_7 = models.CharField(max_length=500, blank=True, null=True)
+    trend_8 = models.CharField(max_length=500, blank=True, null=True)
+    trend_9 = models.CharField(max_length=500, blank=True, null=True)
+    trend_10 = models.CharField(max_length=500, blank=True, null=True)
