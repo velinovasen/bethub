@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import BetsVolume, Prediction, ValueBet, RegularGame, ResultGame
 from .forms import UserRegisterForm
@@ -55,11 +56,9 @@ def register_user(request):
     return render(request, 'users/registration_page.html', {"form": form})
 
 
-def login_user(request):
-    if request.POST:
-        pass
-    else:
-        pass
+@login_required()
+def profile_view(request):
+    return render(request, 'users/profile.html', {})
 
 
 def demo_view(request):
