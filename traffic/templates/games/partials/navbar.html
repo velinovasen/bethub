@@ -6,7 +6,11 @@
         <li><a href="{% url 'valuebets' %}">Value bets</a></li>
         <li><a href="{% url 'results' %}">Results</a></li>
         <div id="navbar-spacer"></div>
-        <li><a href="{% url 'login' %}">Login</a></li>
-        <li><a href="{% url 'registration' %}">Register</a></li>
+        {% if user.is_authenticated %}
+        <li><a class="navbar-right-buttons" href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a class="navbar-right-buttons" href="{% url 'login' %}">Login</a></li>
+        <li><a class="navbar-right-buttons" href="{% url 'registration' %}">Register</a></li>
+        {% endif %}
     </ul>
 </div>
