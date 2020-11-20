@@ -47,8 +47,8 @@ def register_user(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Registration successfull for {username}!')
-            return redirect('all_games')
+            messages.success(request, f'Registration successful for {username}! Login to continue')
+            return redirect('login')
         return render(request, 'users/registration_page.html', {"form": form})
     else:
         form = UserRegisterForm()

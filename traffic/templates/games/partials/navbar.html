@@ -1,9 +1,12 @@
 <div id="navbar">
-    <ul>
+    <ul class="navbar-left-part">
         <li><a href="{% url 'all_games' %}">Games</a></li>
         <li><a href="{% url 'traffic' %}">Traffic</a></li>
         <li><a href="{% url 'predictions' %}">Predictions</a></li>
         <li><a href="{% url 'valuebets' %}">Value bets</a></li>
         <li><a href="{% url 'results' %}">Results</a></li>
+        <div id="navbar-spacer"></div>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'registration' %}">Register</a></li>
     </ul>
 </div>

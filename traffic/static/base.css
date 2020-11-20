@@ -6,6 +6,15 @@
     margin-left: 15%;
     width: 65%;
     position: center;
+    white-space: nowrap;
+}
+
+#navbar-spacer {
+    width: 100%;
+}
+
+.navbar-left-part {
+    display: flex;
 }
 
 #main-site {

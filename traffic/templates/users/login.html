@@ -1,8 +1,8 @@
 {% extends 'games/shared/base.html' %}
 {% load static %}
-    {% block site_title %}BETHUB | REGISTRATION{% endblock %}
+    {% block site_title %}BETHUB | LOGIN{% endblock %}
     {% block header_content %}
-    <h1>Registration</h1>
+    <h1>LOGIN</h1>
     {% if messages %}
         {% for message in messages %}
         <div>
@@ -15,7 +15,7 @@
         <form class="form-group" method="POST">
             {% csrf_token %}
             {{ form }}
-            <button type="submit">Register</button>
-            <p id="have-acc-log-in">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+            <button type="submit">Login</button>
+            <p id="have-acc-log-in">Do not have an account? <a href="{% url 'registration' %}">Register here</a></p>
         </form>
     {% endblock %}
