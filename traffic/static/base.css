@@ -6,19 +6,6 @@
     margin-left: 15%;
     width: 65%;
     position: center;
-    white-space: nowrap;
-}
-
-#navbar-spacer {
-    width: 100%;
-}
-
-.navbar-right-buttons:hover {
-    background: #25b7c4;
-}
-
-.navbar-left-part {
-    display: flex;
 }
 
 #main-site {
@@ -213,33 +200,6 @@ section{
 
 footer {
     height: 100px;
-}
-
-form {
-    width: 99%;
-    margin-top: 3%;
-    display: table;
-    text-align: center;
-}
-
-form label {
-    margit-top: 10%;
-}
-
-form input, label {
-    display: table-row;
-}
-
-form button {
-    margin-top: 1%;
-}
-
-form span {
-    display: none;
-}
-
-#have-acc-log-in {
-    display: block;
 }
 
 /* for custom scrollbar for webkit browser*/

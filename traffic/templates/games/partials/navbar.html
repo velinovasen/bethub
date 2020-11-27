@@ -1,16 +1,9 @@
 <div id="navbar">
-    <ul class="navbar-left-part">
+    <ul>
         <li><a href="{% url 'all_games' %}">Games</a></li>
         <li><a href="{% url 'traffic' %}">Traffic</a></li>
         <li><a href="{% url 'predictions' %}">Predictions</a></li>
         <li><a href="{% url 'valuebets' %}">Value bets</a></li>
         <li><a href="{% url 'results' %}">Results</a></li>
-        <div id="navbar-spacer"></div>
-        {% if user.is_authenticated %}
-        <li><a class="navbar-right-buttons" href="{% url 'logout' %}">Logout</a></li>
-        {% else %}
-        <li><a class="navbar-right-buttons" href="{% url 'login' %}">Login</a></li>
-        <li><a class="navbar-right-buttons" href="{% url 'registration' %}">Register</a></li>
-        {% endif %}
     </ul>
 </div>
