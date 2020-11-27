@@ -18,8 +18,6 @@
 
 
 
-<b>Home page</b>
-<img src="https://serving.photos.photobox.com/32363632a32dde027804f1845ff2e30966ad70699534049cfae36f1d446bc484c1aace2e.jpg"></img>
 
 <b>Traffic page</b>
 <img src="https://serving.photos.photobox.com/67491438c6cca24f52d9669fbf4531bb6b62e7c741496e4a9ae02073fd0cd1c015abd510.jpg"></img>
