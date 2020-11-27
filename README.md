@@ -17,10 +17,11 @@
 </ul>
 
 
-
+<b>Home page</b>
+<img src="https://serving.photos.photobox.com/2642966131f0d7b5cba0929c1f123c7d53be8587e111a63579c15354167ac927e12ee69a.jpg">
 
 <b>Traffic page</b>
-<img src="https://serving.photos.photobox.com/67491438c6cca24f52d9669fbf4531bb6b62e7c741496e4a9ae02073fd0cd1c015abd510.jpg"></img>
+<img src="https://serving.photos.photobox.com/67491438c6cca24f52d9669fbf4531bb6b62e7c741496e4a9ae02073fd0cd1c015abd510.jpg">
 
 <b>Predictions page</b>
-<img src="https://serving.photos.photobox.com/97665076bb2e31b5daaac003915cd5cfed098de1ae854ed69d0958bf8b0d36d3ddad9bfd.jpg"></img>
+<img src="https://serving.photos.photobox.com/97665076bb2e31b5daaac003915cd5cfed098de1ae854ed69d0958bf8b0d36d3ddad9bfd.jpg">
