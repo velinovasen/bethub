@@ -26,4 +26,5 @@ urlpatterns = [
     path('results/', views.results_view, name='results'),
     path('demo/', views.demo_view, name='demo_view'),
     path('bet/', include('betapp.urls')),
+    path('register/', views.RegisterView.as_view(), name='register'),
 ]
