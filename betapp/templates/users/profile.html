@@ -1,0 +1,9 @@
+{% extends 'games/shared/base.html' %}
+{% load static %}
+    {% block site_title %}BETHUB | PROFILE{% endblock %}
+    {% block header_content %}
+    <h1>MY PROFILE</h1>
+    {% endblock %}
+    {% block site_content %}
+           <h1>The user logged in is: {{ user.username }}</h1>
+    {% endblock %}

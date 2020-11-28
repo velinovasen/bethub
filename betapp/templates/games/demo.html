@@ -1,0 +1,10 @@
+{% extends 'games/shared/base.html' %}
+{% load static %}
+    {% block site_title %}BETHUB{% endblock %}
+    {% block header_content %}
+    <h1>THE MOST PLACED ODDS IN EUROPE AT THE MOMENT</h1>
+    {% endblock %}
+    {% block site_content %}
+    {% include 'games/partials/tables/results_table.html' %}
+    {% endblock %}
+

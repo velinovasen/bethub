@@ -6,7 +6,7 @@ from time import sleep
 import re
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('C:\\Users\\Asen\\Desktop\\bethub\\bethub')
+sys.path.append('C:\\Users\\Asen\\Desktop\\bethub_clone\\venv_v\\bethub')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bethub.settings')
 django.setup()
 application = get_wsgi_application()

@@ -15,15 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from traffic import views
+from betapp import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('traffic/', include('traffic.urls')),
-    path('predictions/', views.predictions, name='predictions'),
-    path('valuebets/', views.valuebets, name='valuebets'),
-    path('', views.regular_games, name='all_games'),
-    path('results/', views.results_view, name='results'),
-    path('demo/', views.demo_view, name='demo_view'),
-    path('bet/', include('betapp.urls')),
+    path('', views.index_view, name='betapp_index',),
+
 ]

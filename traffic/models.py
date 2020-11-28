@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 from django.db import models
 
 # Create your models here.
@@ -62,7 +64,7 @@ class ValueBet(models.Model):
 
 
 class RegularGame(models.Model):
-    id = models.AutoField(primary_key=True)
+    date = models.DateField()
     time = models.TimeField()
     home_team = models.CharField(max_length=40)
     away_team = models.CharField(max_length=40)
@@ -73,7 +75,7 @@ class RegularGame(models.Model):
     added_timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.id} {self.time} {self.home_team} - {self.away_team} ' \
+        return f'{self.date} {self.time} {self.home_team} - {self.away_team} ' \
                f'{self.home_odd} {self.draw_odd} {self.away_odd} - {self.added_timestamp}'
 
 
@@ -104,3 +106,13 @@ class TrendModel(models.Model):
     trend_8 = models.CharField(max_length=500, blank=True, null=True)
     trend_9 = models.CharField(max_length=500, blank=True, null=True)
     trend_10 = models.CharField(max_length=500, blank=True, null=True)
+
+
+class AppUser(models.Model):
+    cash = models.DecimalField(validators=[MinValueValidator(0.00)],
+                               max_digits=6, decimal_places=2)
+    total_yield = models.FloatField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username

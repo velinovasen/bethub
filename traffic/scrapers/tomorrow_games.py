@@ -6,10 +6,11 @@ from time import sleep
 import re
 from datetime import datetime, timedelta, date
 from django.core.wsgi import get_wsgi_application
-
-sys.path.append('C:\\Users\\Asen\\Desktop\\bethub\\bethub')
+from bethub import settings
+sys.path.append('C:\\Users\\Asen\\Desktop\\bethub_clone\\venv_v\\bethub')     ## change it every time
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bethub.settings')
 django.setup()
+
 application = get_wsgi_application()
 
 from traffic.models import RegularGame
@@ -90,7 +91,7 @@ class TomorrowGames:
                             date_model = date.today().strftime('%Y-%m-%d')
                         time = re.search(self.REGEX["time"], str(game)).group(1)
 
-                        print(date_model)
+                        #print(date_model)
                         home_odd, draw_odd, away_odd = '', '', ''
                         try:
                             odds = re.findall(self.REGEX["odds"], str(game))
@@ -109,6 +110,7 @@ class TomorrowGames:
                             the_bulk.append(RegularGame(time=time, home_team=home_team,
                                                         away_team=away_team, home_odd=home_odd,
                                                         draw_odd=draw_odd, away_odd=away_odd))
+                            print(time, date_model, home_team, away_team, last_48h)
                 except AttributeError:
                     continue
 

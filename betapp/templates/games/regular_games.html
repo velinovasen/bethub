@@ -1,0 +1,14 @@
+{% extends 'games/shared/base.html' %}
+{% load static %}
+   {% block site_title %}BETHUB{% endblock %}
+        {% include 'games/partials/navbar.html' %}
+        {% block header_content %}
+            <h1>NEXT GAMES</h1>
+        {% endblock %}
+        {% block site_content %}
+            {% include 'games/partials/tables/all_games.html' %}
+            {% include 'games/partials/my_coupon.html' %}
+        {% endblock %}
+{% block body_end_scripts %}
+<script src="{% static 'js/myCoupon.js' %}"></script>
+{% endblock %}

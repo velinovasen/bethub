@@ -1,0 +1,10 @@
+{% extends 'games/shared/base.html' %}
+{% load static %}
+{% block site_title %}BETHUB | VALUE BETS{% endblock %}
+    {% include 'games/partials/navbar.html' %}
+    {% block header_content %}
+        <h1>VALUE BETS</h1>
+    {% endblock %}
+    {% block site_content %}
+        {% include 'games/partials/tables/valuebets_table.html' %}
+    {% endblock %}

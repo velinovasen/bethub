@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'traffic',
+    'betapp',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'bethub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bethub',
+        'NAME': 'bethub_alternate',
         'USER': 'postgres',
         'PASSWORD': 'bianconeroo931',
         'HOST': 'localhost',
