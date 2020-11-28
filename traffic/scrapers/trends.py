@@ -1,9 +1,19 @@
+import os
+import sys
+
+import django
+from django.core.wsgi import get_wsgi_application
 from selenium.webdriver import Chrome, ChromeOptions
 import bs4
 import re
 from time import sleep
 
 from webdriver_manager.chrome import ChromeDriverManager
+
+sys.path.append('C:\\Users\\Asen\\Desktop\\bethub_main\\bethub')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bethub.settings')
+django.setup()
+application = get_wsgi_application()
 
 
 class Trends:

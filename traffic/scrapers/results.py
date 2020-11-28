@@ -10,7 +10,7 @@ import re
 from datetime import datetime, timedelta
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('C:\\Users\\Asen\\Desktop\\bethub\\bethub')
+sys.path.append('C:\\Users\\Asen\\Desktop\\bethub_main\\bethub')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bethub.settings')
 django.setup()
 application = get_wsgi_application()

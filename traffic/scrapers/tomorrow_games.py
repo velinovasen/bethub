@@ -1,4 +1,6 @@
 import sys, os, django
+
+from django.db import ProgrammingError
 from selenium.webdriver import ChromeOptions, Chrome
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
@@ -7,7 +9,7 @@ import re
 from datetime import datetime, timedelta, date
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('C:\\Users\\Asen\\Desktop\\bethub\\bethub')
+sys.path.append('C:\\Users\\Asen\\Desktop\\bethub_main\\bethub')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bethub.settings')
 django.setup()
 application = get_wsgi_application()
@@ -104,17 +106,22 @@ class TomorrowGames:
 
                         last_48h = (datetime.today() - timedelta(hours=48)).strftime('%Y-%m-%d')
 
+                        print(time, home_team, away_team, home_odd, draw_odd, away_odd)
                         if not RegularGame.objects.filter(time=time, home_team=home_team,
                                                           away_team=away_team, added_timestamp__gte=last_48h).exists():
-                            the_bulk.append(RegularGame(date=date_model, time=time, home_team=home_team,
+                            the_bulk.append(RegularGame(time=time, home_team=home_team,
                                                         away_team=away_team, home_odd=home_odd,
                                                         draw_odd=draw_odd, away_odd=away_odd))
+                            print('VLIZAZAZAAZAZA')
                 except AttributeError:
                     continue
+        try:
+            RegularGame.objects.bulk_create(the_bulk)
+        except ProgrammingError:
+            print('PROBLEM WITH DB')
+            print(the_bulk)
 
-        RegularGame.objects.bulk_create(the_bulk)
 
-
-# if __name__ == '__main__':
-#     tmr = TomorrowGames()
-#     tmr.scrape()
+if __name__ == '__main__':
+    tmr = TomorrowGames()
+    tmr.scrape()

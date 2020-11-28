@@ -62,8 +62,6 @@ class ValueBet(models.Model):
 
 
 class RegularGame(models.Model):
-    id = models.AutoField(primary_key=True)
-    date = models.DateField()
     time = models.TimeField()
     home_team = models.CharField(max_length=40)
     away_team = models.CharField(max_length=40)
@@ -74,7 +72,7 @@ class RegularGame(models.Model):
     added_timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.id} {self.date} {self.time} {self.home_team} - {self.away_team} ' \
+        return f'{self.time} {self.home_team} - {self.away_team} ' \
                f'{self.home_odd} {self.draw_odd} {self.away_odd} - {self.added_timestamp}'
 
 
