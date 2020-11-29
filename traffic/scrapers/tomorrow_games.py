@@ -71,6 +71,7 @@ class TomorrowGames:
     def clean_data(self, games, link):
         # CLEAN THE DATA
         the_bulk = []
+        RegularGame.objects.all().delete()
         for game in games:
             # FIND THE TIME
             score = re.search(self.REGEX['score'], str(game))
@@ -96,7 +97,7 @@ class TomorrowGames:
                         home_odd, draw_odd, away_odd = '', '', ''
                         try:
                             odds = re.findall(self.REGEX["odds"], str(game))
-                            [home_odd, draw_odd, away_odd] = [odds[0][1], odds[2][1], odds[3][1]]
+                            [home_odd, draw_odd, away_odd] = [odds[0][1], odds[2][1], odds[4][1]]
 
                         except IndexError:
                             continue
@@ -112,7 +113,6 @@ class TomorrowGames:
                             the_bulk.append(RegularGame(time=time, home_team=home_team,
                                                         away_team=away_team, home_odd=home_odd,
                                                         draw_odd=draw_odd, away_odd=away_odd))
-                            print('VLIZAZAZAAZAZA')
                 except AttributeError:
                     continue
         try:
