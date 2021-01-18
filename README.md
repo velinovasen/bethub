@@ -1,3 +1,5 @@
+<p>Please refer to https://github.com/velinovasen/bethub_rebuild for the rebuild version.</p>
+
 <h1>BETHUB</h1>
     <b>A web-crawler which checks multiple websites and stores the data into postgres.
     Then we use data to create a bookmaker, where you could place bets and participate in a
